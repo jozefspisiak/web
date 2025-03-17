@@ -82,7 +82,7 @@
 			<h2 class="section-title">Latest Projects</h2>
 			<div class="projects-grid">
 				<div class="project-card">
-					<h3><a href=https://www.bookelicious.com/">Bookelicious.com</a></h3>
+					<h3><a href="https://www.bookelicious.com/" style="color: inherit;">Bookelicious.com</a></h3>
 					<p>As a CTO I am leading team of developers building new features to ecommerce platform and migrating legacy PHP code to modern Python/Django stack.</p>
 					<div class="project-tags">
 						<span>React</span>
@@ -180,28 +180,6 @@
 	</footer>
 
 	<script src="script.js"></script>
-	<script>
-	// Theme switcher functionality
-	document.addEventListener('DOMContentLoaded', () => {
-		const themeToggle = document.getElementById('theme-toggle');
-		
-		// Check for saved theme preference
-		const savedTheme = localStorage.getItem('theme') || 'dark';
-		document.documentElement.setAttribute('data-theme', savedTheme);
-		themeToggle.checked = savedTheme === 'light';
-
-		// Theme switch handler
-		themeToggle.addEventListener('change', (e) => {
-			if (e.target.checked) {
-				document.documentElement.setAttribute('data-theme', 'light');
-				localStorage.setItem('theme', 'light');
-			} else {
-				document.documentElement.setAttribute('data-theme', 'dark');
-				localStorage.setItem('theme', 'dark');
-			}
-		});
-	});
-	</script>
 </body>
 
 </html>
