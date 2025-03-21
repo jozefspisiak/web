@@ -136,23 +136,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Theme switcher functionality
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('theme-toggle');
-    
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    themeToggle.checked = savedTheme === 'light';
+// Theme toggle functionality
+const themeToggle = document.getElementById('theme-toggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-    // Theme switch handler
-    themeToggle.addEventListener('change', (e) => {
-        if (e.target.checked) {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        }
+// Set initial theme
+document.documentElement.setAttribute('data-theme', 
+    localStorage.getItem('theme') || 
+    (prefersDarkScheme.matches ? 'dark' : 'light')
+);
+
+themeToggle.checked = document.documentElement.getAttribute('data-theme') === 'light';
+
+themeToggle.addEventListener('change', function() {
+    const theme = this.checked ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+});
+
+// Mobile menu functionality
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const navLinks = document.querySelector('.nav-links');
+
+hamburgerMenu.addEventListener('click', () => {
+    hamburgerMenu.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburgerMenu.classList.remove('active');
+        navLinks.classList.remove('active');
     });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!hamburgerMenu.contains(e.target) && !navLinks.contains(e.target)) {
+        hamburgerMenu.classList.remove('active');
+        navLinks.classList.remove('active');
+    }
 });
