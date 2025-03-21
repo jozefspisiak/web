@@ -567,6 +567,8 @@ footer {
         margin-top: 2rem;
         padding: 1rem 0;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: center;
     }
 
     .mobile-theme-switch .theme-switch {
@@ -575,17 +577,18 @@ footer {
     }
 
     .mobile-theme-switch .slider {
-        width: 60px;
-        height: 30px;
+        width: 50px;
+        height: 25px;
+        border: 2px solid var(--primary-orange);
     }
 
     .mobile-theme-switch .slider:before {
-        width: 26px;
-        height: 26px;
+        width: 21px;
+        height: 21px;
     }
 
     input:checked + .slider:before {
-        transform: translateX(30px);
+        transform: translateX(25px);
     }
 
     .hamburger-menu.active span:nth-child(1) {
